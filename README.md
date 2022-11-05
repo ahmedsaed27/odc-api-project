@@ -1,8 +1,8 @@
-# Hackathon Project
+## Hackathon Project
 
 ### We want an app that promotes local businesses as well as tourism in each Egyptian Governorate,including reels on locals’ opinions about cafes, restaurants, and other establishment.
 
-# Requirements:
+## Requirements:
 
 ### 1- Basic and JWT Authentication.
 ### 2- Social Authentication with facebook and google and twitter tokens.
@@ -11,7 +11,7 @@
 ### 5- A secure way to store and display the reels.
 
 
-# How to use 
+## How to use 
 
 ### go to config/services.php and set your client_id , client_secret 
 ### if you dont have you should create one to login with google // here your link to create project  https://console.cloud.google.com
@@ -24,7 +24,7 @@
 ### you can login with google by Access token
 
 
-# Post man docs
+## Post man docs
 
 ### https://documenter.getpostman.com/view/22323709/2s8YYBQRJX
 
