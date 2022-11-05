@@ -19,7 +19,8 @@
    
 ### get your Access token by This link
     https://developers.google.com/oauthplayground
-   
+### run migration 
+    php artisan migrate
 ### run seeder 'php artisan db:seed' or go to this Uri
     http://127.0.0.1:8000/seed
    
