@@ -18,7 +18,7 @@
 ### get your Access token by This link https://developers.google.com/oauthplayground
 ### run the server 'php artisan serve'
 ### run seeder 'php artisan db:seed' or go to this Uri '127.0.0.1:8000/seed'
-### now you have two users  
+### now you have couple of users 
 ### user number one -> email => user@gmail.com  , password => password , role => User
 ### user number two -> email => admin@gmail.com , password => password , role => Admin
 ### you can login with google by Access token
