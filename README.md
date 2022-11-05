@@ -4,11 +4,11 @@
 
 # Requirements:
 
-## Basic and JWT Authentication.
-## Social Authentication with facebook and google and twitter tokens.
-## Database oriented project (feel free to use any type of database).
-## REST API
-## A secure way to store and display the reels.
+### Basic and JWT Authentication.
+### Social Authentication with facebook and google and twitter tokens.
+### Database oriented project (feel free to use any type of database).
+### REST API
+### A secure way to store and display the reels.
 
 
 
