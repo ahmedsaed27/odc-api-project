@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\action;
 use App\Http\Controllers\googlelogin;
+use App\Http\Controllers\callController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,9 @@ use App\Http\Controllers\googlelogin;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('seed', callController::class);
 
 
 
