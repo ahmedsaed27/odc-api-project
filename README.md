@@ -21,7 +21,7 @@
    https://developers.google.com/oauthplayground
    
 ### run seeder 'php artisan db:seed' or go to this Uri
-   http://127.0.0.1:8000/seed
+   127.0.0.1:8000/seed
    
 ### now you have couple of users 
 ### user number one -> email => user@gmail.com  , password => password , role => User
