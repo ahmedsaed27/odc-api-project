@@ -37,11 +37,11 @@ Route::middleware(['chekAPI'])->group(function () {
 Route::middleware(['AssignGuard'])->group(function () {
     Route::post('admin/rigster', [adminController::class , 'adminRigster'])->name('admin'); // add admin role == 1
     Route::post('logout', [AuthController::class , 'logout']); // logout and bloced the token
-    Route::post('carate/reel' , [posts::class , 'uplodeReel']); // make reel if you auth
+    Route::post('carate/reel' , [posts::class , 'uplodeReel']); // make reel
     Route::get('refresh' , [AuthController::class , 'refresh']); // refreshTheToken and make new token
     Route::post('like' , [action::class , 'like']); // make like
     Route::post('comment' , [action::class , 'comment']); // make comment
-    Route::get('posts' , [posts::class , 'allData']); // get All Posts Data [postsData , reactes , usersComment]
+    Route::get('posts' , [posts::class , 'allData']); // get all Posts
 });
 
 
