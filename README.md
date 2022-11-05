@@ -13,7 +13,7 @@
 
 ## How to use 
 
-### config/services.php set your client_id , client_secret 
+### go to env file and set your google_client_id , google_client_secret 
 ### if you dont have you should create one to login with google // here your link to create project
     https://console.cloud.google.com
    
