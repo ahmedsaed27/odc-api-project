@@ -5,7 +5,7 @@
 ## Requirements:
 
 ### 1- Basic and JWT Authentication.
-### 2- Social Authentication with facebook and google and twitter tokens.
+### 2- Social Authentication with google token.
 ### 3- Database oriented project (feel free to use any type of database).
 ### 4- REST API
 ### 5- A secure way to store and display the reels.
