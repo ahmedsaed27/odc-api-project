@@ -32,9 +32,9 @@ return [
     ],
 
     'google' => [
-        'client_id' => "**** **** **** ****", // googlr client_id
-        'client_secret' => "**** **** **** ****", // google client_secret 
-        'redirect' => 'http://127.0.0.1:8000/auth/google/callback',
+        'client_id' => env('google_client_id'), // google client_id
+        'client_secret' => env('google_client_secret'), // google client_secret
+        'redirect' => env('google_redirect'),
     ],
 
 
