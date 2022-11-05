@@ -35,7 +35,6 @@ class social extends Controller
             $finduser = User::where('google_id', $user->id)->first();
 
             if($finduser){
-
                 return $this->returnData(key: 'user' , value: $finduser , msg:'');
             }
 
