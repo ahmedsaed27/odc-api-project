@@ -15,12 +15,14 @@
 
 ### go to config/services.php and set your client_id , client_secret 
 ### if you dont have you should create one to login with google // here your link to create project
-https://console.cloud.google.com
+   https://console.cloud.google.com
+   
 ### get your Access token by This link
-https://developers.google.com/oauthplayground
-### run the server 'php artisan serve'
+   https://developers.google.com/oauthplayground
+   
 ### run seeder 'php artisan db:seed' or go to this Uri
-http://127.0.0.1:8000/seed
+   http://127.0.0.1:8000/seed
+   
 ### now you have couple of users 
 ### user number one -> email => user@gmail.com  , password => password , role => User
 ### user number two -> email => admin@gmail.com , password => password , role => Admin
