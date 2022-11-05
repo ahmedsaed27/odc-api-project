@@ -53,6 +53,9 @@ class posts extends Controller
         $reel_tmp = $reel->getRealPath();
         $reel_Extension = $reel->getClientOriginalExtension();
         $reel_name = time().".".$reel_Extension;
+        if(!file_exists(public_path('video'))){
+            mkdir(public_path('video'));
+        }
         move_uploaded_file($reel_tmp , public_path('video/'.$reel_name));
         return $name = $reel_name;
     }
