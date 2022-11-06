@@ -5,7 +5,7 @@
 ## Requirements:
 
 ### 1- Basic and JWT Authentication.
-### 2- Social Authentication with facebook and google and twitter tokens.
+### 2- Social Authentication with google token.
 ### 3- Database oriented project (feel free to use any type of database).
 ### 4- REST API
 ### 5- A secure way to store and display the reels.
@@ -13,7 +13,7 @@
 
 ## How to use 
 
-### config/services.php set your client_id , client_secret 
+### go to env file and set your google_client_id , google_client_secret 
 ### if you dont have you should create one to login with google // here your link to create project
     https://console.cloud.google.com
    
