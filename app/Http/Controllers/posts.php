@@ -76,7 +76,8 @@ class posts extends Controller
 
 
 
-    public function deleteReel(Request $reqeust){
+    public function deleteReel(Request $reqeust) :JsonResponse
+    {
         try{
             $validation = Validator::make($reqeust->all() , ['reels_id' => 'required|numeric']);
 
