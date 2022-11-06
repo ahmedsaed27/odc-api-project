@@ -16,7 +16,7 @@ class adminController extends Controller
 {
     use GeneralTrait;
     public function adminRigster(Request $request):JsonResponse{
-        if(Gate::allows('isAdmin')){
+        if(Gate::allows('role') == true){
             $ruels = [
                 'name' => 'required|string|max:255',
                 'email' => 'required|string|email|max:255|unique:users',

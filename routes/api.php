@@ -42,6 +42,7 @@ Route::middleware(['AssignGuard'])->group(function () {
     Route::post('like' , [action::class , 'like']); // make like
     Route::post('comment' , [action::class , 'comment']); // make comment
     Route::get('posts' , [posts::class , 'allData']); // get all Posts
+    Route::post('delete/reel' , [posts::class , 'deleteReel']); // delete reel
 });
 
 

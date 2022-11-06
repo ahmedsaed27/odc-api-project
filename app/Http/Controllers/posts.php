@@ -5,12 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Gate;
-use Illuminate\Validation\Rules\File;
 use App\Traits\GeneralTrait;
 use Illuminate\Http\JsonResponse;
 use App\Models\posts as post;
 use Auth;
-
+use Exception;
 
 
 class posts extends Controller
@@ -18,7 +17,7 @@ class posts extends Controller
     use GeneralTrait;
 
     public function uplodeReel(Request $reqeust) :JsonResponse{
-        if(Gate::allows('isUser')){
+        if(Gate::allows('role') == false){
 
             $validation = $this->reel_validation($reqeust->all());
 
@@ -74,6 +73,32 @@ class posts extends Controller
 
         return $postsData;
     }
+
+
+
+    public function deleteReel(Request $reqeust){
+        try{
+            $validation = Validator::make($reqeust->all() , ['reels_id' => 'required|numeric']);
+
+            if($validation->fails()){
+                return $this->catchTheError(validation: $validation);
+            }
+
+            $id = post::findOrFail($reqeust->reels_id);
+            $imgPath = \public_path("video/$id->reel");
+
+            if(\file_exists($imgPath)){
+                \unlink($imgPath);
+            }
+
+            $id->delete();
+            return $this->returnSuccessMessage(erorrNumber:'' , msg: 'reel deleted sucsses');
+        }catch(Exception $e){
+            return  $this->returnError(errorNumber:'' , msg:'cant find this post');
+        }
+    }
+
+
 
 
 

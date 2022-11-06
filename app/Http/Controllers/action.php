@@ -18,7 +18,7 @@ class action extends Controller
     /////////////////////////////////////////     make a like      \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
     public function like(Request $requset) :JsonResponse{ // if ha have a like he will make unlike
-       if(Gate::allows('isUser')){
+       if(Gate::allows('role') == false){
 
             $rules = ['reels_id' => 'required|numeric'];
 
@@ -65,7 +65,7 @@ class action extends Controller
     /////////////////////////////////////////     make a Comment       \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
     public function comment(Request $requset) :JsonResponse{ // make comment
-        if(Gate::allows('isUser')){
+        if(Gate::allows('role') == false){
             $rules = ['reels_id' => 'required|numeric' , 'comment' => 'required|string'];
 
             $validation = Validator::make($requset->all() , $rules);
@@ -96,7 +96,7 @@ class action extends Controller
         }
 
     }
-    
+
 
 
 
