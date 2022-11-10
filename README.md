@@ -24,7 +24,7 @@
 ### run seeder 'php artisan db:seed' or go to this Uri
     http://127.0.0.1:8000/seed
    
-### now you have couple of users 
+### now you have two users
     user number one -> email => user@gmail.com  , password => password , role => User
     user number two -> email => admin@gmail.com , password => password , role => Admin
 ### you can login with google by Access token
