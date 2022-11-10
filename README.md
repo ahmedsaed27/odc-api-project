@@ -14,7 +14,7 @@
 ## How to use 
 
 ### go to env file and set your google_client_id , google_client_secret 
-### if you dont have you should create one to login with google // here your link to create project
+### if you dont have you should create one to login with google // here your link to create a project
     https://console.cloud.google.com
    
 ### get your Access token by This link
