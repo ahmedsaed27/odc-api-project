@@ -40,17 +40,19 @@ class action extends Controller
 
 
     private function storeLike($reels_id) :JsonResponse{
+        try{
+            $creatLike = actions::create([
+                'react_like' => 1 ,
+                'user_id' => auth()->user()->id,
+                'reels_id' => $reels_id
+            ]);
 
-        $creatLike = actions::create([
-            'react_like' => 1 ,
-            'user_id' => auth()->user()->id,
-            'reels_id' => $reels_id
-        ]);
-
-        if($creatLike){
-            return $this->likeResponse(reels_id: $reels_id);
+            if($creatLike){
+                return $this->likeResponse(reels_id: $reels_id);
+            }
+        }catch(Exception $e){
+            return  $this->returnError(errorNumber:'' , msg:'cant find this post');
         }
-        return  $this->returnError(errorNumber:'' , msg:'Data dose not saved');
     }
 
 
