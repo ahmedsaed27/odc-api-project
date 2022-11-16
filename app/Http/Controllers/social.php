@@ -31,15 +31,16 @@ class social extends Controller
 
             $user = Socialite::driver('google')->userFromToken($request->Token);
 
-            $token = Auth::guard('api')->attempt(['email' => $user->email , 'password' => 'password']);
+
 
             $finduser = User::where('google_id', $user->id)->first();
             if($finduser){
+                $token = Auth::guard('api')->login($finduser);
                 return $this->loginRespones(user: $finduser , token: $token);
             }
 
-            $create_google_user =  User::CreateUser(request: $user);
-
+            User::CreateUser(request: $user);
+            $token = Auth::guard('api')->attempt(['email' => $user->email , 'password' => 'password']);
             return $this->loginRespones(user: $user->user , token: $token);
 
         } catch (Exception $e) {
@@ -60,16 +61,14 @@ class social extends Controller
             }
             $user = Socialite::driver('facebook')->userFromToken($request->token);
 
-
-            $token = Auth::guard('api')->attempt(['email' => $user->email , 'password' => 'password']);
-
             $finduser = User::where('facebook_id', $user->id)->first();
             if($finduser){
+                $token = Auth::guard('api')->login($finduser);
                 return $this->loginRespones(user: $finduser , token: $token);
             }
 
             $create_google_user =  User::CreateUser(request: $user);
-
+            $token = Auth::guard('api')->attempt(['email' => $user->email , 'password' => 'password']);
             return $this->loginRespones(user: $user->user , token:$token);
         }catch(Exception $e){
             return $this->returnError(errorNumber:'', msg: 'Invalid Credentials');
