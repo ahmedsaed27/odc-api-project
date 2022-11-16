@@ -31,16 +31,16 @@ class social extends Controller
 
             $user = Socialite::driver('google')->userFromToken($request->Token);
 
+            $token = Auth::guard('api')->attempt(['email' => $user->email , 'password' => 'password']);
 
             $finduser = User::where('google_id', $user->id)->first();
-
             if($finduser){
-                return $this->returnData(key: 'user' , value: $finduser , msg:'');
+                return $this->loginRespones(user: $finduser , token: $token);
             }
 
             $create_google_user =  User::CreateUser(request: $user);
 
-            return $this->returnData(key:'user' , value: $user->user , msg:'');
+            return $this->loginRespones(user: $user->user , token: $token);
 
         } catch (Exception $e) {
             return $this->returnError(errorNumber:'', msg: 'Invalid Credentials');
@@ -54,25 +54,27 @@ class social extends Controller
 
     public function handlefacebookCallback(Request $request){
         try{
-            // $validation = validator::make($request->all() , ['token' => 'required|string']);
-            // if($validation->fails()){
-            //     return $this->catchTheError(validation: $validation);
-            // }
+            $validation = validator::make($request->all() , ['token' => 'required|string']);
+            if($validation->fails()){
+                return $this->catchTheError(validation: $validation);
+            }
             $user = Socialite::driver('facebook')->userFromToken($request->token);
 
 
+            $token = Auth::guard('api')->attempt(['email' => $user->email , 'password' => 'password']);
+
             $finduser = User::where('facebook_id', $user->id)->first();
             if($finduser){
-                return $this->returnData(key: 'user' , value: $finduser , msg:'') ;
+                return $this->loginRespones(user: $finduser , token: $token);
             }
 
             $create_google_user =  User::CreateUser(request: $user);
-            return $this->returnData(key:'user' , value: $user , msg:'');
+
+            return $this->loginRespones(user: $user->user , token:$token);
         }catch(Exception $e){
             return $this->returnError(errorNumber:'', msg: 'Invalid Credentials');
         }
-        // $user = Socialite::driver('facebook')->userFromToken($request->token);
-        // return $this->returnData(key:'user' , value: $user , msg:'');
+
     }
 
 

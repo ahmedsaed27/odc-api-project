@@ -64,7 +64,7 @@ trait GeneralTrait
         ]);
     }
 
-    public function returnData($key, $value, $msg = '')
+    public function returnData($key, $value, $msg = '' )
     {
         return response()->json([
             'status' => 'success',
