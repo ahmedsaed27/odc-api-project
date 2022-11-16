@@ -29,7 +29,8 @@ use App\Http\Controllers\action;
 Route::middleware(['chekAPI'])->group(function () {
     Route::post('register',[AuthController::class , 'register'])->name('register'); // register and make jwt token
     Route::post('login', [AuthController::class , 'login'])->name('login'); // login and make jwt token
-    Route::post('google/auth/callback', [social::class, 'handleGoogleCallback']); // login with google
+    Route::post('google/auth/callback', [social::class, 'handleGoogleCallback'])->name('google'); // login with google
+    Route::post('facebook/auth/callback',[social::class , 'handlefacebookCallback'])->name('facebook');
 });
 
 

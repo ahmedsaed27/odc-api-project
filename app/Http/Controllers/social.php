@@ -52,6 +52,29 @@ class social extends Controller
         return validator::make($request, $ruels);
     }
 
+    public function handlefacebookCallback(Request $request){
+        try{
+            // $validation = validator::make($request->all() , ['token' => 'required|string']);
+            // if($validation->fails()){
+            //     return $this->catchTheError(validation: $validation);
+            // }
+            $user = Socialite::driver('facebook')->userFromToken($request->token);
+
+
+            $finduser = User::where('facebook_id', $user->id)->first();
+            if($finduser){
+                return $this->returnData(key: 'user' , value: $finduser , msg:'') ;
+            }
+
+            $create_google_user =  User::CreateUser(request: $user);
+            return $this->returnData(key:'user' , value: $user , msg:'');
+        }catch(Exception $e){
+            return $this->returnError(errorNumber:'', msg: 'Invalid Credentials');
+        }
+        // $user = Socialite::driver('facebook')->userFromToken($request->token);
+        // return $this->returnData(key:'user' , value: $user , msg:'');
+    }
+
 
 
 

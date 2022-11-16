@@ -26,6 +26,7 @@ class User extends Authenticatable implements JWTSubject{
         'remember_token',
         'email_verified_at',
         'google_id',
+        'facebook_id',
         'role'
     ];
 
@@ -40,7 +41,6 @@ class User extends Authenticatable implements JWTSubject{
         'email_verified_at',
         'updated_at',
         'created_at',
-        'google_id',
     ];
 
     /**
@@ -53,24 +53,23 @@ class User extends Authenticatable implements JWTSubject{
     ];
 
     public function scopeCreateUser($query , $request){
-        if(request()->routeIs('admin')){
-            $role = 1;
-        }
 
-        if(isset($request->password)){
-            $password = bcrypt($request->password);
-        }
+        request()->routeIs('admin') ? $role = 1 : $role = 0;
 
-        $password = bcrypt('password');
-        $role = 0;
-        
+        request()->routeIs('google') ? $google_id = $request->id : $google_id = null;
+
+        request()->routeIs('facebook') ? $facebook_id = $request->id : $facebook_id = null;
+
+        isset($request->password) ? $password = bcrypt($request->password) : $password = bcrypt('password');
+
         $user = $query->create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => $password,
             'email_verified_at'=>date('Y-m-d h:i:s'),
             'remember_token'=>\bcrypt(rand(10000,100000000)),
-            'google_id' => $request->id,
+            'google_id' => $google_id,
+            'facebook_id'=> $facebook_id,
             'role' => $role
         ]);
         return $user;

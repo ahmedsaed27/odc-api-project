@@ -35,7 +35,7 @@ class posts extends Controller
 
             return $this->returnError(errorNumber:'' , msg: 'filed to add reel');
         }
-        return  $this->returnError(errorNumber:'' , msg:'only user can make like');
+        return  $this->returnError(errorNumber:'' , msg:'only user can make reel');
     }
 
     private function createReel($caption , $name) :post{
