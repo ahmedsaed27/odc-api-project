@@ -60,7 +60,7 @@ class posts extends Controller
     }
 
     private function reel_validation($requestAll){
-        $rules = ['reel'=>'required|file|mimes:mp4','caption'=>'required|string'];
+        $rules = ['reel'=>'required|file|mimes:mp4','caption'=>'required|alpha_num'];
         return validator::make($requestAll , $rules);
     }
 
@@ -72,6 +72,11 @@ class posts extends Controller
         },'react'])->withcount('react')->get();
 
         return $postsData;
+    }
+
+
+    public function findPost($id){
+        return post::find($id);
     }
 
 

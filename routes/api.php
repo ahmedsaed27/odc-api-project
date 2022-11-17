@@ -40,10 +40,14 @@ Route::middleware(['AssignGuard'])->group(function () {
     Route::post('logout', [AuthController::class , 'logout']); // logout and bloced the token
     Route::post('carate/reel' , [posts::class , 'uplodeReel']); // make reel
     Route::get('refresh' , [AuthController::class , 'refresh']); // refreshTheToken and make new token
+
     Route::post('like' , [action::class , 'like']); // make like
+    Route::post('share' , [action::class , 'ShareWidget']); // share the post to social media
     Route::post('comment' , [action::class , 'comment']); // make comment
+
     Route::get('posts' , [posts::class , 'allData']); // get all Posts
     Route::post('delete/reel' , [posts::class , 'deleteReel']); // delete reel
+    Route::get('post/{id}' , [posts::class , 'findPost']); // reel by id
 });
 
 

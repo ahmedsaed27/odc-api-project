@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Traits\GeneralTrait;
 use Illuminate\Http\JsonResponse;
 use Exception;
-
+use App\Models\posts;
 class action extends Controller
 {
     use GeneralTrait;
@@ -68,7 +68,7 @@ class action extends Controller
 
     public function comment(Request $requset) :JsonResponse{ // make comment
         if(Gate::allows('role') == false){
-            $rules = ['reels_id' => 'required|numeric' , 'comment' => 'required|string'];
+            $rules = ['reels_id' => 'required|numeric' , 'comment' => 'required|alpha_num'];
 
             $validation = Validator::make($requset->all() , $rules);
 
@@ -98,6 +98,26 @@ class action extends Controller
         }
 
     }
+
+
+
+
+    public function ShareWidget(Request $requset)
+    {
+        foreach(config('laravel-share.services') as $key => $val){
+
+            if($requset->social == $key){
+                $uri = $val['uri'].'http://127.0.0.1:8000/api/post/'.$requset->id;
+                return $this->returnData(key:'Uri' , value: $uri , msg:'');
+            }
+
+        }
+        return $this->returnError(errorNumber:'' , msg:'social not found');
+
+    }
+
+
+
 
 
 
